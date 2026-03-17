@@ -1,0 +1,358 @@
+/* ============================================================
+   HOME PAGE HEADER
+============================================================ */
+.page-home header {
+  background-color: var(--header-bg);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding-block: 20px;
+  text-align: center;
+}
+
+.page-home .site-branding img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   HOME PAGE NAV
+============================================================ */
+.page-home .circle-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.page-home .nav-circles {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  margin: 0 auto;
+}
+
+/* Home page circle sizes */
+.page-home .nav-circle {
+  width: clamp(120px, 10vw, 180px);
+  height: clamp(120px, 10vw, 180px);
+  font-size: clamp(18px, 2vw, 28px);
+}
+
+/* Thicker line on home */
+.page-home .nav-circles::before {
+  height: 8px;
+  border-radius: 4px;
+}
+
+/* Slightly reduced scale for active home circle on home page */
+.page-home .nav-circle.home {
+  transform: scale(1.12) !important;
+}
+
+/* ============================================================
+   HOME PAGE LAYOUT
+============================================================ */
+.page-home h1 {
+  margin-top: 40px;
+}
+
+.page-home main {
+  padding-bottom: 42px;
+}
+
+/* Home footer sits naturally at bottom */
+.page-home footer {
+  position: static;
+  margin-top: auto;
+}
+
+.home-featured p,
+.home-explore p {
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 400;
+}
+
+.home-intro-text {
+  margin-top: 24px;
+  font-size: clamp(18px, 1.6vw, 22px);
+}
+
+/* ============================================================
+   BRANDING PAGE MEDIA
+============================================================ */
+
+/* Keep all branding images and videos proportional */
+.page-branding img,
+.page-branding video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Restore consistent wrapper sizing */
+.page-branding .image-wrapper,
+.page-branding .video-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+/* If Branding uses a grid, restore clean columns */
+.page-branding .media-grid--2col,
+.page-branding .media-grid--3col,
+.page-branding .media-grid--4col {
+  align-items: start;
+}
+
+.page-branding .media-grid--2col img,
+.page-branding .media-grid--3col img,
+.page-branding .media-grid--4col img,
+.page-branding .media-grid--2col video,
+.page-branding .media-grid--3col video,
+.page-branding .media-grid--4col video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Half-size logo video on Branding page */
+.branding-logo-video {
+  max-width: 450px;
+  margin: 0 auto 40px;
+}
+
+.branding-logo-video video,
+.branding-logo-video img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.featured-flour-sack {
+  display: block;
+  margin: 0 auto;
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+
+/* ============================================================
+   ABOUT PAGE LAYOUT
+============================================================ */
+:root {
+  --dark-blue: #22487A;
+  --accent-yellow: #FDE74C;
+  --accent-lime: #9BC53D;
+
+  --page-bg: #e6eef2;
+  --text-main: #22487A;
+  --header-bg: #12325c;
+}
+
+/* PAGE WRAPPER */
+.about-wrapper {
+  background: var(--page-bg);
+  color: var(--text-main);
+  padding: 3rem 1.5rem 4rem;
+  font-family: system-ui, sans-serif;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* MAIN TWO-COLUMN LAYOUT */
+.about-columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+/* LEFT COLUMN */
+.about-block {
+  margin-bottom: 2.5rem;
+}
+
+.about-block h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+}
+
+/* Vertical line on first line */
+.about-block p {
+  position: relative;
+  text-indent: 20px;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.about-block p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 3px;
+  height: 1em;
+  background-color: var(--accent-lime);
+  border-radius: 2px;
+}
+
+/* RIGHT COLUMN CARDS */
+.about-card {
+  background: white;
+  border-left: 6px solid var(--accent-lime);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.about-card p strong {
+  font-weight: 700;
+}
+
+.about-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--dark-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about-card ul {
+  padding-left: 1.2rem;
+}
+
+.about-card li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.about-block {
+  background: white;
+  padding: 1.5rem 1.75rem;
+  border-radius: 12px;
+  border-left: 6px solid var(--accent-lime);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.about-block h2 {
+  color: var(--accent-lime);
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.about-columns {
+  gap: 2rem;
+}
+
+.about-left {
+  max-width: 620px;
+}
+
+.about-right {
+  background: rgba(255,255,255,0.6);
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .about-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-first-line {
+  position: relative;
+  text-indent: 20px;
+  line-height: 1.7;
+}
+
+.about-first-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 3px;
+  height: 1em;
+  background-color: var(--accent-lime);
+  border-radius: 2px;
+}
+
+/* Prevent the bolded first sentence from wrapping weirdly */
+.first-line-bold {
+  display: inline;
+  white-space: normal;
+}
+
+/* ============================
+   ABOUT — HERO SECTION (centered)
+============================ */
+
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* balanced columns */
+  gap: 1.5rem;
+  padding: 1.8rem 2rem;             /* your original spacing */
+  border-radius: 16px;
+  color: white;
+
+  background: linear-gradient(
+    to bottom right,
+    var(--header-bg),
+    var(--dark-blue)
+  );
+}
+
+/* Center the intro card */
+.about-hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;          /* vertical centering */
+  align-items: center;              /* horizontal centering */
+  text-align: center;
+
+  margin: 0 auto;                   /* centers the card in its grid column */
+  max-width: 480px;
+
+  background: rgba(255,255,255,0.25);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  border-left: 6px solid var(--accent-lime);
+}
+
+.about-hero-text p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* Center the photo */
+.about-hero-photo {
+  margin: 0 auto;                   /* centers the photo block */
+  max-width: 260px;
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.about-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero h1 {
+  color: var(--accent-yellow);
+}

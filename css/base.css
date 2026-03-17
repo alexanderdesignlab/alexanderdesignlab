@@ -1,0 +1,201 @@
+/* ============================================================
+   RESET
+============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   VARIABLES
+============================================================ */
+:root {
+  --dark-blue: #22487A;
+  --accent-yellow: #FDE74C;
+  --accent-lime: #9BC53D;
+
+  --page-bg: #e6eef2;
+  --text-main: #22487A;
+  --header-bg: #12325c;
+}
+
+/* ============================================================
+   BASE LAYOUT
+============================================================ */
+html {
+  overflow-y: scroll;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--text-main);
+  line-height: 1.6;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main,
+footer {
+  max-width: 1536px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 3vw, 40px);
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+/* Prevent header from collapsing */
+body > header {
+  flex-shrink: 0;
+}
+
+/* Stretch the section that wraps <main> */
+body > section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Let main grow inside the section */
+body > section > main {
+  flex: 1;
+}
+
+/* Simple centered paragraph style */
+.p-style-1 {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: bold;
+  color: var(--dark-blue);
+  margin: -30px 0 20px 0;
+  text-align: center;
+}
+
+h2 {
+  font-size: clamp(22px, 3vw, 32px);
+  position: relative;
+  padding-bottom: 8px;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--dark-blue);
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: bold;
+  color: var(--dark-blue);
+  text-align: center;
+}
+
+/* ============================================================
+   SECTIONS
+============================================================ */
+section {
+  border-radius: 40px;
+  padding: clamp(30px, 4vw, 60px);
+  background-color: #fff;
+  margin-block: clamp(20px, 4vw, 60px);
+}
+
+.section-with-border-1 {
+  background: #ffffff;
+  border-radius: 40px;
+  padding: clamp(40px, 5vw, 60px);
+  margin-block: clamp(40px, 6vw, 80px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border: 6px solid var(--dark-blue);
+  outline: 10px solid var(--accent-lime);
+  outline-offset: -20px;
+  max-width: 1536px;
+  margin: clamp(20px, 4vw, 60px) auto;
+  padding-inline: clamp(16px, 3vw, 40px);
+}
+
+/* Shared margin tweak for bordered sections */
+.section-with-border-1,
+.section-with-border-2,
+.section-with-border-3 {
+  margin: 40px clamp(10px, 4vw, 40px);
+}
+
+/* ============================================================
+   MEDIA GRIDS
+============================================================ */
+.media-grid--2col,
+.media-grid--3col,
+.media-grid--4col {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+  gap: 20px;
+}
+
+.media-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.media-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.media-grid--4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.media-grid--2col img,
+.media-grid--3col img,
+.media-grid--4col img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 700px) {
+  .media-grid--3col,
+  .media-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .media-grid--2col,
+  .media-grid--3col,
+  .media-grid--4col {
+    grid-template-columns: 1fr;
+  }
+}

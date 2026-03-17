@@ -1,0 +1,503 @@
+/* ============================================================
+   HEADER — GLOBAL + SUBPAGE
+============================================================ */
+header {
+  width: 100%;
+  padding-inline: 0;
+}
+
+/* Subpage header: 3‑zone layout */
+body:not(.page-home) header {
+  background-color: var(--header-bg);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px clamp(16px, 3vw, 40px);
+}
+
+.header-left {
+  flex: 0.7;
+  display: flex;
+  align-items: center;
+  min-width: 140px;
+}
+
+.header-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-right {
+  flex: 0.7;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Logo sizes */
+body:not(.page-home) .site-branding img {
+  height: clamp(70px, 10vw, 110px);
+  width: auto;
+}
+
+.header-ao-logo {
+  width: clamp(70px, 10vw, 110px);
+  height: clamp(70px, 10vw, 110px);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.header-ao-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.header-right .header-name {
+  color: #ffffff !important;
+}
+
+.intro-break {
+  line-height: 1.8; /* creates the vertical space */
+}
+
+.spacer{
+  height: 24px;
+}
+
+.about-text p {
+  position: relative;
+  text-indent: 20px; /* indent the first line */
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* vertical line on the first line only */
+.about-text p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em; /* aligns with first line */
+  width: 3px; /* thickness of the line */
+  height: 1em; /* only the first line */
+  background-color: #9BC53D; /* your green */
+  border-radius: 2px;
+}
+
+.section-label {
+  color: var(--accent-yellow);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* ============================
+   HOME PAGE — IDENTITY + NAV
+============================ */
+
+.page-home .home-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(40px, 8vw, 100px) 20px;
+  text-align: center;
+  background: linear-gradient(
+    to bottom right,
+    var(--header-bg),
+    var(--dark-blue)
+  );
+  border-radius: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-home .home-intro {
+  margin-bottom: clamp(30px, 4vw, 60px);
+}
+
+.page-home .home-title {
+  font-size: clamp(32px, 5vw, 60px);
+  color: var(--accent-yellow);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.page-home .home-tagline {
+  font-size: clamp(16px, 1.4vw, 22px);
+  color: var(--page-bg);
+  max-width: 600px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ============================================================
+   NAVIGATION — CIRCLE NAV
+============================================================ */
+.circle-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: clamp(30px, 4vw, 60px) 0;
+}
+
+.nav-circles {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: min(70%, 720px);
+  margin: 0 auto;
+}
+
+/* Yellow line */
+.nav-circles::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-yellow);
+  transform: translateY(-50%);
+  z-index: 1;
+  border-radius: 2px;
+}
+
+/* Subpage circles */
+.nav-circle {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--dark-blue);
+
+  width: clamp(52px, 4.5vw, 72px);
+  height: clamp(52px, 4.5vw, 72px);
+  font-size: clamp(7px, 0.9vw, 11px);
+
+  border-radius: 50%;
+  border: 3px solid var(--accent-lime);
+  background-color: #DCEBB4;
+
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.nav-circle:hover {
+  transform: scale(1.12);
+  background-color: var(--accent-lime);
+}
+
+/* Make HOME larger than the other nav circles (base) */
+.nav-circle.home {
+  transform: scale(1.25);
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+/* Active page */
+.page-illustration .nav-circle.illustration,
+.page-logos        .nav-circle.logos,
+.page-branding     .nav-circle.branding,
+.page-home         .nav-circle.home,
+.page-app          .nav-circle.app,
+.page-animation    .nav-circle.animation,
+.page-about-me     .nav-circle.about-me {
+  pointer-events: none;
+  transform: scale(1.12);
+  background-color: var(--accent-lime);
+  border-width: 4px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.18);
+}
+
+body:not(.page-home) .nav-circle.home:hover {
+  transform: scale(1.35);
+}
+
+/* ============================================================
+   MEDIA ITEM + CAPTION
+============================================================ */
+.media-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+.media-caption {
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: var(--dark-blue);
+  text-align: center;
+  font-weight: 300;
+}
+
+.home-what-i-do .media-caption {
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 500;
+}
+
+/* Larger category labels (used on Branding page too) */
+.branding-section-title {
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 700;
+  text-align: center;
+  color: var(--dark-blue);
+  margin-bottom: 10px;
+}
+
+/* Ensure media items inside grids don’t clip overlays */
+.media-item,
+.media-grid--2col > .media-item,
+.media-grid--3col > .media-item {
+  overflow: visible;
+}
+
+/* ============================================================
+   IMAGE WRAPPER + WATERMARK
+============================================================ */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  display: block;
+}
+
+.image-wrapper img {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.protected-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: auto; /* blocks right-click + drag */
+}
+
+.watermark {
+  position: absolute;
+  inset: 0;
+  background-image: url("images/watermark/your-watermark.png");
+  background-repeat: repeat;
+  background-size: 60%;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transform: rotate(38deg);
+  background-position: 67% 67%;
+  transition: opacity 0.3s ease;
+}
+
+/* Watermark becomes visible when captured/printed */
+@media print {
+  .watermark {
+    opacity: 0.72;
+  }
+}
+
+.image-wrapper:hover .watermark {
+  opacity: 0.05;
+}
+
+.image-wrapper.hover-zoom img {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.image-wrapper.hover-zoom:hover img {
+  transform: scale(1.07);
+}
+
+.watermark,
+.overlay {
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.home-what-i-do .image-wrapper {
+  height: 300px; /* bigger shared box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-what-i-do .image-wrapper img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.coming-soon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.coming-soon-image {
+  max-width: 260px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.coming-soon-text {
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 20px 0;
+  background-color: var(--header-bg);
+  color: #fff;
+  text-align: center;
+}
+
+/* ============================================================
+   ANIMATION CAROUSEL — GROUPED SLIDES, CROSSFADE
+============================================================ */
+
+/* Outer container */
+.animation-carousel {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Fixed-height stage to prevent page jump */
+.carousel-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px; /* adjust if you want taller/shorter */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Each slide: caption above video, stacked, crossfading */
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Caption above video */
+.carousel-caption {
+  font-size: clamp(16px, 1.4vw, 20px);
+  color: var(--dark-blue);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Video styling */
+.carousel-video {
+  width: 400px;
+  max-width: 1000px;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 10px; 
+}
+
+
+/* Controls */
+.carousel-controls {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-btn {
+  background: var(--dark-blue);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.carousel-btn:hover {
+  background: #1a3a63;
+  transform: translateY(-1px);
+}
+
+.carousel-video.flour-sack {
+  max-width: 900px !important;
+  height: auto !important;
+  width: auto !important
+}
+
+.carousel-video.lower {
+  transform: translate(-50%, 20px);
+}
+
+.carousel-video.raise-small {
+  transform: translate(0, -20px);
+}
+
+.carousel-video.raise-med {
+  transform: translate(0, -50px);
+}
+
+.carousel-video {
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-caption {
+  position: relative;
+  z-index: 5;
+}
+
+.carousel-controls {
+  position: relative;
+  z-index: 10;
+}
