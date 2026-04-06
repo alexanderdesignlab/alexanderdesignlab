@@ -25,17 +25,24 @@
 
   <h1 class="text-effects portfolio-title">P O R T F O L I O</h1>
 
+<!-- CENTER: Navigation -->
+<div class="header-center">
   <nav class="circle-nav">
-    <div class="nav-circles">
+    <div class="nav-scale-wrapper">
+      <div class="nav-circles">
         <a href="index.html" class="nav-circle home">Home</a>
         <a href="illustrations.html" class="nav-circle illustration">Illustration</a>
         <a href="logo-designs.html" class="nav-circle logos">Logos</a>
         <a href="brand-identity.html" class="nav-circle branding">Branding</a>
         <a href="temporary-app-page.html" class="nav-circle app">App</a>
         <a href="animation.html" class="nav-circle animation">Animation</a>
+        <a href="interactive.html" class="nav-circle interactive">Game</a>
         <a href="about-me.html" class="nav-circle about-me">About Me</a>
+      </div>
     </div>
   </nav>
+</div>
+
 
 <!-- INTRO SECTION -->
 <section class="section-with-border-1 home-intro">
@@ -97,9 +104,16 @@
   <p class="p-style-1">A glimpse into my animation and motion design.</p>
 
   <div class="centered-block image-wrapper">
-    <video class="featured-flour-sack" autoplay muted loop loading="lazy" preload="none">
-      <source src="images/animation/flour-sack-animation.mp4" type="video/mp4">
-    </video>
+      <video 
+        class="featured-flour-sack" 
+        autoplay 
+        muted 
+        playsinline 
+        loop 
+        preload="auto"
+      >
+        <source src="images/animation/flour-sack-animation.mp4" type="video/mp4">
+      </video>
     <div class="watermark"></div>
     <div class="overlay"></div>
   </div>
@@ -117,20 +131,7 @@
   <p class="p-style-3">&copy; 2026 Alexander Design Lab. All rights reserved.</p>
 </footer>
 
-<!-- IMAGE PROTECTION SCRIPTS -->
-<script>
-  document.addEventListener("contextmenu", function(e) {
-    if (e.target.closest(".image-wrapper")) {
-      e.preventDefault();
-    }
-  });
-
-  document.addEventListener("touchstart", function(e) {
-    if (e.target.closest(".image-wrapper")) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-</script>
-
+<!-- IMAGE / MEDIA SCRIPT -->
+<script src="js/global-media.js"></script>
 </body>
 </html>

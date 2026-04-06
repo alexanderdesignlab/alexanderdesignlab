@@ -16,36 +16,40 @@
 
 <header>
 
-  <!-- LEFT: Main Logo -->
-  <div class="header-left">
-    <div class="site-branding">
-      <img src="images/businesses/alexander-design-lab/alexander-design-lab-logo.png" 
-           alt="Alexander Design Lab Logo" loading="lazy">
+  <div class="header-top-row">
+
+    <div class="header-left">
+      <div class="site-branding">
+        <img src="images/businesses/alexander-design-lab/alexander-design-lab-logo.png" 
+             alt="Alexander Design Lab Logo" loading="lazy">
+      </div>
     </div>
+
+    <div class="header-right">
+      <div class="header-ao-logo">
+        <img src="images/businesses/alexander-olson-logo/ao-logo-white.png" 
+             alt="AO Logo" loading="lazy">
+      </div>
+    </div>
+
   </div>
 
-  <!-- CENTER: Navigation -->
   <div class="header-center">
     <nav class="circle-nav">
-      <div class="nav-circles">
-        <a href="index.html" class="nav-circle home">Home</a>
-        <a href="illustrations.html" class="nav-circle illustration">Illustration</a>
-        <a href="logo-designs.html" class="nav-circle logos">Logos</a>
-        <a href="brand-identity.html" class="nav-circle branding">Branding</a>
-        <a href="temporary-app-page.html" class="nav-circle app">App</a>
-        <a href="animation.html" class="nav-circle animation">Animation</a>
-        <a href="about-me.html" class="nav-circle about-me">About Me</a>
+      <div class="nav-scale-wrapper">
+        <div class="nav-circles">
+          <a class="nav-circle nav-spacer" aria-hidden="true"></a>
+          <a href="index.html" class="nav-circle home">Home</a>
+          <a href="illustrations.html" class="nav-circle illustration">Illustration</a>
+          <a href="logo-designs.html" class="nav-circle logos">Logos</a>
+          <a href="brand-identity.html" class="nav-circle branding">Branding</a>
+          <a href="temporary-app-page.html" class="nav-circle app">App</a>
+          <a href="animation.html" class="nav-circle animation">Animation</a>
+          <a href="interactive.html" class="nav-circle interactive">Game</a>
+          <a href="about-me.html" class="nav-circle about-me">About Me</a>
+        </div>
       </div>
     </nav>
-  </div>
-
-  <!-- RIGHT: Name + AO Logo -->
-  <div class="header-right">
-    <span class="header-name">Alexander Olson</span>
-    <div class="header-ao-logo">
-      <img src="images/businesses/alexander-olson-logo/ao-logo-white.png" 
-           alt="AO Logo" loading="lazy">
-    </div>
   </div>
 
 </header>
@@ -193,20 +197,7 @@
   <p class="p-style-3">&copy; 2026 Alexander Design Lab. All rights reserved.</p>
 </footer>
 
-<!-- IMAGE PROTECTION SCRIPTS -->
-<script>
-  document.addEventListener("contextmenu", function(e) {
-    if (e.target.closest(".image-wrapper")) {
-      e.preventDefault();
-    }
-  });
-
-  document.addEventListener("touchstart", function(e) {
-    if (e.target.closest(".image-wrapper")) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-</script>
-
+<!-- IMAGE / MEDIA SCRIPT -->
+<script src="js/global-media.js"></script>
 </body>
 </html>

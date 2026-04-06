@@ -17,36 +17,40 @@
 
 <header>
 
-  <!-- LEFT: Main Logo -->
-  <div class="header-left">
-    <div class="site-branding">
-      <img src="images/businesses/alexander-design-lab/alexander-design-lab-logo.png" 
-           alt="Alexander Design Lab Logo" loading="lazy">
+  <div class="header-top-row">
+
+    <div class="header-left">
+      <div class="site-branding">
+        <img src="images/businesses/alexander-design-lab/alexander-design-lab-logo.png" 
+             alt="Alexander Design Lab Logo" loading="lazy">
+      </div>
     </div>
+
+    <div class="header-right">
+      <div class="header-ao-logo">
+        <img src="images/businesses/alexander-olson-logo/ao-logo-white.png" 
+             alt="AO Logo" loading="lazy">
+      </div>
+    </div>
+
   </div>
 
-  <!-- CENTER: Navigation -->
   <div class="header-center">
     <nav class="circle-nav">
-      <div class="nav-circles">
-        <a href="index.html" class="nav-circle home">Home</a>
-        <a href="illustrations.html" class="nav-circle illustration">Illustration</a>
-        <a href="logo-designs.html" class="nav-circle logos">Logos</a>
-        <a href="brand-identity.html" class="nav-circle branding">Branding</a>
-        <a href="temporary-app-page.html" class="nav-circle app">App</a>
-        <a href="animation.html" class="nav-circle animation">Animation</a>
-        <a href="about-me.html" class="nav-circle about-me">About Me</a>
+      <div class="nav-scale-wrapper">
+        <div class="nav-circles">
+          <a class="nav-circle nav-spacer" aria-hidden="true"></a>
+          <a href="index.html" class="nav-circle home">Home</a>
+          <a href="illustrations.html" class="nav-circle illustration">Illustration</a>
+          <a href="logo-designs.html" class="nav-circle logos">Logos</a>
+          <a href="brand-identity.html" class="nav-circle branding">Branding</a>
+          <a href="temporary-app-page.html" class="nav-circle app">App</a>
+          <a href="animation.html" class="nav-circle animation">Animation</a>
+          <a href="interactive.html" class="nav-circle interactive">Game</a>
+          <a href="about-me.html" class="nav-circle about-me">About Me</a>
+        </div>
       </div>
     </nav>
-  </div>
-
-  <!-- RIGHT: Name + AO Logo -->
-  <div class="header-right">
-    <span class="header-name">Alexander Olson</span>
-    <div class="header-ao-logo">
-      <img src="images/businesses/alexander-olson-logo/ao-logo-white.png" 
-           alt="AO Logo" loading="lazy">
-    </div>
   </div>
 
 </header>
@@ -64,25 +68,46 @@
       <!-- Slide 1 -->
       <div class="carousel-slide active">
         <div class="carousel-caption">Flour Sack Character</div>
-        <video class="carousel-video flour-sack raise-small" muted loop loading="lazy" preload="none">
-          <source src="images/animation/flour-sack-animation.mp4" type="video/mp4">
-        </video>
+          <video 
+            class="carousel-video flour-sack raise-small"
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="auto"
+          >
+            <source src="images/animation/flour-sack-animation.mp4" type="video/mp4">
+          </video>
       </div>
 
       <!-- Slide 2 -->
       <div class="carousel-slide">
         <div class="carousel-caption">Bouncing Ball</div>
-        <video class="carousel-video" muted loop loading="lazy" preload="none">
-          <source src="images/animation/ball-animation.mp4" type="video/mp4">
-        </video>
+          <video 
+            class="carousel-video"
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="auto"
+          >
+            <source src="images/animation/ball-animation.mp4" type="video/mp4">
+          </video>
       </div>
 
       <!-- Slide 3 -->
       <div class="carousel-slide">
         <div class="carousel-caption">Line Coming to Life</div>
-        <video class="carousel-video raise-med" muted loop loading="lazy" preload="none">
-          <source src="images/animation/line-animation.mp4" type="video/mp4">
-        </video>
+          <video 
+            class="carousel-video raise-med"
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="auto"
+          >
+            <source src="images/animation/line-animation.mp4" type="video/mp4">
+          </video>
       </div>
 
     </div>
@@ -101,57 +126,8 @@
   <p class="p-style-3">&copy; 2026 Alexander Design Lab. All rights reserved.</p>
 </footer>
 
-<!-- NEW CROSSFADE CAROUSEL SCRIPT -->
-<script>
-(function () {
-  const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-
-  if (!slides.length || !prevBtn || !nextBtn) return;
-
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      const video = slide.querySelector('video');
-
-      if (i === index) {
-        slide.classList.add('active');
-        if (video) {
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        }
-      } else {
-        slide.classList.remove('active');
-        if (video) {
-          video.pause();
-        }
-      }
-    });
-  }
-
-  function goNext() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  function goPrev() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  prevBtn.addEventListener('click', goPrev);
-  nextBtn.addEventListener('click', goNext);
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') goPrev();
-    if (e.key === 'ArrowRight') goNext();
-  });
-
-  showSlide(currentIndex);
-})();
-</script>
-
+<!-- SCRIPTS -->
+<script src="js/global-media.js"></script>
+<script src="js/animation-carousel.js"></script>
 </body>
 </html>

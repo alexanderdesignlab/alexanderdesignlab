@@ -49,6 +49,8 @@ body:not(.page-home) .site-branding img {
   height: clamp(70px, 10vw, 110px);
   border-radius: 50%;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
 }
 
 .header-ao-logo img {
@@ -59,81 +61,15 @@ body:not(.page-home) .site-branding img {
 
 .header-right .header-name {
   color: #ffffff !important;
+  white-space: nowrap;
 }
 
 .intro-break {
   line-height: 1.8;
 }
 
-.spacer{
+.spacer {
   height: 24px;
-}
-
-.about-text p {
-  position: relative;
-  text-indent: 20px;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.about-text p::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.35em;
-  width: 3px;
-  height: 1em;
-  background-color: #9BC53D;
-  border-radius: 2px;
-}
-
-.section-label {
-  color: var(--accent-yellow);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-  display: inline-block;
-}
-
-/* ============================
-   HOME PAGE — IDENTITY + NAV
-============================ */
-
-.page-home .home-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(40px, 8vw, 100px) 20px;
-  text-align: center;
-  background: linear-gradient(
-    to bottom right,
-    var(--header-bg),
-    var(--dark-blue)
-  );
-  border-radius: 16px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.page-home .home-intro {
-  margin-bottom: clamp(30px, 4vw, 60px);
-}
-
-.page-home .home-title {
-  font-size: clamp(32px, 5vw, 60px);
-  color: var(--accent-yellow);
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.page-home .home-tagline {
-  font-size: clamp(16px, 1.4vw, 22px);
-  color: var(--page-bg);
-  max-width: 600px;
-  line-height: 1.6;
-  opacity: 0.9;
 }
 
 /* ============================================================
@@ -144,29 +80,59 @@ body:not(.page-home) .site-branding img {
   display: flex;
   justify-content: center;
   margin: clamp(30px, 4vw, 60px) 0;
+  overflow: visible;
 }
 
+/* Scale nav as one unit */
+.nav-scale-wrapper {
+  display: inline-block;
+  transform-origin: top center;
+}
+
+@media (max-width: 900px) {
+  .nav-scale-wrapper {
+    transform: scale(calc(100vw / 600));
+  }
+}
+
+/* Yellow line behind circles */
+.nav-circles {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  white-space: nowrap;
+}
+
+/* Yellow line behind circles — anchored only to real circles */
 .nav-circles {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: min(70%, 720px);
-  margin: 0 auto;
 }
 
-/* Yellow line */
 .nav-circles::before {
   content: "";
   position: absolute;
   top: 50%;
-  left: 0;
-  width: 100%;
   height: 4px;
   background: var(--accent-yellow);
+  border-radius: 2px;
   transform: translateY(-50%);
   z-index: 1;
-  border-radius: 2px;
+
+  /* Start at center of first REAL circle (Home) */
+  left: calc(clamp(52px, 4.5vw, 72px) / 2);
+
+  /* End at center of last REAL circle */
+  right: calc(clamp(52px, 4.5vw, 72px) / 2);
+}
+
+@media (min-width: 901px) {
+  .nav-circles::before {
+    left: clamp(52px, 4.5vw, 72px);
+    right: clamp(52px, 4.5vw, 72px);
+  }
 }
 
 /* Subpage circles */
@@ -182,7 +148,6 @@ body:not(.page-home) .site-branding img {
 
   width: clamp(52px, 4.5vw, 72px);
   height: clamp(52px, 4.5vw, 72px);
-  font-size: clamp(7px, 0.9vw, 11px);
 
   border-radius: 50%;
   border: 3px solid var(--accent-lime);
@@ -191,12 +156,28 @@ body:not(.page-home) .site-branding img {
   transition: transform 0.25s ease, background-color 0.25s ease;
 }
 
+/* Desktop nav text */
+.circle-nav .nav-circle {
+  font-size: clamp(8px, 0.55vw, 9px);
+}
+
+/* Home circle text */
+.circle-nav .nav-circle.home {
+  font-size: clamp(12px, 1.15vw, 26px);
+}
+
+/* Make ALL non-home nav text smaller on the HOME PAGE */
+.page-home .nav-circle:not(.home) {
+  font-size: clamp(20px, 1.15vw, 50px) !important;
+}
+
+/* Hover */
 .nav-circle:hover {
   transform: scale(1.12);
   background-color: var(--accent-lime);
 }
 
-/* Make HOME larger than the other nav circles (base) */
+/* Home circle larger */
 .nav-circle.home {
   transform: scale(1.25);
   font-weight: 700;
@@ -222,6 +203,44 @@ body:not(.page-home) .nav-circle.home:hover {
   transform: scale(1.35);
 }
 
+/* Mobile circle sizes */
+@media (max-width: 900px) {
+  .nav-circle {
+    width: 72px !important;
+    height: 72px !important;
+    font-size: 11px !important;
+  }
+
+  .nav-circle.home {
+    width: 150px !important;
+    height: 150px !important;
+    font-size: 22px !important;
+  }
+}
+
+.nav-circle.home {
+  position: relative;
+  z-index: 3;
+}
+
+.nav-circles::before {
+  z-index: 1;
+}
+
+.nav-circle.nav-spacer {
+  visibility: visible;
+  pointer-events: none;
+  width: clamp(70px, 5vw, 95px);
+  height: clamp(70px, 5vw, 95px);
+  transform: scale(2);
+
+  background-color: var(--header-bg);
+  border-color: transparent;
+  z-index: 3;
+}
+
+
+
 /* ============================================================
    MEDIA ITEM + CAPTION
 ============================================================ */
@@ -246,7 +265,7 @@ body:not(.page-home) .nav-circle.home:hover {
   font-weight: 500;
 }
 
-/* Larger category labels (used on Branding page too) */
+/* Larger category labels */
 .branding-section-title {
   font-size: clamp(20px, 2.4vw, 28px);
   font-weight: 700;
@@ -255,7 +274,7 @@ body:not(.page-home) .nav-circle.home:hover {
   margin-bottom: 10px;
 }
 
-/* Ensure media items inside grids don’t clip overlays */
+/* Prevent clipping */
 .media-item,
 .media-grid--2col > .media-item,
 .media-grid--3col > .media-item {
@@ -325,12 +344,6 @@ body:not(.page-home) .nav-circle.home:hover {
   transform: scale(1.07);
 }
 
-.watermark,
-.overlay {
-  pointer-events: none;
-  will-change: opacity;
-}
-
 .home-what-i-do .image-wrapper {
   height: 300px;
   display: flex;
@@ -344,43 +357,9 @@ body:not(.page-home) .nav-circle.home:hover {
   object-fit: contain;
 }
 
-.coming-soon-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 0;
-  text-align: center;
-}
-
-.coming-soon-image {
-  max-width: 260px;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.coming-soon-text {
-  font-size: clamp(20px, 2vw, 26px);
-  font-weight: 400;
-  color: var(--text-primary);
-}
-
 /* ============================================================
-   FOOTER
+   CAROUSEL — ANIMATION PAGE
 ============================================================ */
-footer {
-  width: 100%;
-  margin: 0;
-  padding: 20px 0;
-  background-color: var(--header-bg);
-  color: #fff;
-  text-align: center;
-}
-
-/* ============================================================
-   ANIMATION CAROUSEL — GROUPED SLIDES, CROSSFADE
-============================================================ */
-
 .animation-carousel {
   width: 100%;
   max-width: 1200px;
@@ -427,6 +406,8 @@ footer {
   color: var(--dark-blue);
   text-align: center;
   font-weight: 500;
+  position: relative;
+  z-index: 5;
 }
 
 .carousel-video {
@@ -434,7 +415,27 @@ footer {
   max-width: 1000px;
   max-height: 600px;
   object-fit: contain;
-  border-radius: 10px; 
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-video.flour-sack {
+  max-width: 900px !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+.carousel-video.lower {
+  transform: translate(-50%, 20px);
+}
+
+.carousel-video.raise-small {
+  transform: translate(0, -20px);
+}
+
+.carousel-video.raise-med {
+  transform: translate(0, -50px);
 }
 
 .carousel-controls {
@@ -442,6 +443,8 @@ footer {
   gap: 20px;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
 .carousel-btn {
@@ -460,49 +463,22 @@ footer {
   transform: translateY(-1px);
 }
 
-.carousel-video.flour-sack {
-  max-width: 900px !important;
-  height: auto !important;
-  width: auto !important
-}
-
-.carousel-video.lower {
-  transform: translate(-50%, 20px);
-}
-
-.carousel-video.raise-small {
-  transform: translate(0, -20px);
-}
-
-.carousel-video.raise-med {
-  transform: translate(0, -50px);
-}
-
-.carousel-video {
-  position: relative;
-  z-index: 1;
-}
-
-.carousel-caption {
-  position: relative;
-  z-index: 5;
-}
-
-.carousel-controls {
-  position: relative;
-  z-index: 10;
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 20px 0;
+  background-color: var(--header-bg);
+  color: #fff;
+  text-align: center;
 }
 
 /* ============================================================
    MOBILE HEADER + NAV (900px)
 ============================================================ */
 @media (max-width: 900px) {
-  body:not(.page-home) header {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 16px clamp(16px, 3vw, 40px);
-    row-gap: 16px;
-  }
 
   .header-left,
   .header-right {
@@ -522,9 +498,10 @@ footer {
   }
 
   .nav-circles {
-    width: auto;
-    gap: 16px;
-    justify-content: center;
+    width: auto !important;
+    max-width: none !important;
+    gap: 16px !important;
+    justify-content: center !important;
   }
 
   .nav-circles::before {
@@ -533,17 +510,226 @@ footer {
     transform: translate(-50%, -50%);
     height: 4px;
   }
+}
 
-  .nav-circle,
-  .page-home .nav-circle {
-    width: clamp(110px, 24vw, 150px) !important;
-    height: clamp(110px, 24vw, 150px) !important;
-    font-size: clamp(16px, 4vw, 22px) !important;
-    font-weight: 400;
+/* ============================================================
+   FIX MOBILE BREAKPOINT + AO LOGO DISTORTION (1100px)
+============================================================ */
+@media (max-width: 1100px) {
+
+  .header-left,
+  .header-right {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    justify-content: center !important;
   }
 
-  .nav-circle.home,
-  .page-home .nav-circle.home {
-    transform: scale(1.08) !important;
+  .header-ao-logo {
+    aspect-ratio: 1 / 1 !important;
+    flex-shrink: 0 !important;
   }
+
+  .header-center {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+  }
+}
+
+/* ============================================================
+   MOBILE HEADER — EXACT 2-ROW LAYOUT (900px)
+============================================================ */
+@media (max-width: 900px) {
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 10px;
+  }
+
+  .header-top-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: clamp(16px, 4vw, 40px);
+  }
+
+  .header-name {
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .header-left,
+  .header-right {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+  }
+}
+
+/* ============================================================
+   FINAL DESKTOP HEADER RESTORE (OVERRIDES MOBILE)
+============================================================ */
+@media (min-width: 901px) {
+
+  /* Force header back to one row */
+  body:not(.page-home) header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+
+  /* Disable the mobile 2-row wrapper */
+  .header-top-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding-inline: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Restore left zone */
+  .header-left {
+    flex: 0.7 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-width: 140px !important;
+  }
+
+  /* Restore center zone */
+  .header-center {
+    flex: 2 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    order: 0 !important;
+    margin-top: 0 !important;
+    width: auto !important;
+  }
+
+  /* Restore right zone */
+  .header-right {
+    flex: 0.7 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    min-width: 140px !important;
+  }
+}
+
+/* ============================================================
+   FIX: Disable header-top-row on desktop
+============================================================ */
+@media (min-width: 901px) {
+  .header-top-row {
+    display: contents !important;
+  }
+}
+
+/* Force correct header order on desktop: ADL — NAV — AO */
+@media (min-width: 901px) {
+  .header-left {
+    order: 1 !important;  /* ADL logo */
+  }
+
+  .header-center {
+    order: 2 !important;  /* NAV */
+  }
+
+  .header-right {
+    order: 3 !important;  /* AO + name */
+  }
+}
+
+/* ============================================================
+   FIX: Put ADL logo on the very top layer
+   ============================================================ */
+.header-left .site-branding {
+  position: relative;
+  z-index: 9999; /* ADL logo above everything */
+}
+
+/* Home circle above yellow line but below ADL logo */
+.nav-circle.home {
+  position: relative;
+  z-index: 3;
+}
+
+/* Spacer above yellow line but below ADL logo */
+.nav-circle.nav-spacer {
+  position: relative;
+  z-index: 3;
+}
+
+/* Yellow line stays behind everything */
+.nav-circles::before {
+  z-index: 1;
+}
+
+/* ============================================================
+Interactive Prototype
+   ============================================================ */
+
+.interactive-prototype-section {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.phone-mockup-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.phone-frame {
+  position: relative;
+  width: 1000px; /* adjust to match your mockup */
+}
+
+.phone-frame-image {
+  width: 100%;
+  display: block;
+  position: relative;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.phone-screen-embed {
+  position: absolute;
+  top: 9.9%;      /* lowered to match the thicker top bezel */
+  left: 37.6%;     /* pulled inward to match left bezel */
+  width: 24.66%;   /* narrower to match screen width */
+  height: 79.82%;  /* shorter to match screen height */
+  overflow: hidden;
+  border-radius: 24px;
+  z-index: 2;
+  background: rgba(255, 0, 0, 0.3);
+}
+
+.xd-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 24px; /* match or slightly exceed */
+  position: relative;
+  z-index: 1;
 }

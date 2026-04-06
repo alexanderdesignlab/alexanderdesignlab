@@ -1,14 +1,22 @@
 /* ============================================================
    RESET
 ============================================================ */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Prevent horizontal overflow */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* ============================================================
-   VARIABLES
+   VARIABLES (moved here from all files)
 ============================================================ */
 :root {
   --dark-blue: #22487A;
@@ -27,8 +35,7 @@ html {
   overflow-y: scroll;
 }
 
-html,
-body {
+html, body {
   height: 100%;
 }
 
@@ -43,6 +50,7 @@ body {
   flex-direction: column;
 }
 
+/* Main content area */
 main,
 footer {
   max-width: 1536px;
@@ -56,7 +64,12 @@ main {
 
 footer {
   flex-shrink: 0;
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-inline: 0 !important;
 }
+
 
 /* Prevent header from collapsing */
 body > header {
@@ -73,13 +86,6 @@ body > section {
 /* Let main grow inside the section */
 body > section > main {
   flex: 1;
-}
-
-/* Simple centered paragraph style */
-.p-style-1 {
-  text-align: center;
-  width: 100%;
-  margin: 0 auto;
 }
 
 /* ============================================================
@@ -117,8 +123,15 @@ h3 {
   text-align: center;
 }
 
+/* Simple centered paragraph style */
+.p-style-1 {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
 /* ============================================================
-   SECTIONS
+   GLOBAL SECTIONS
 ============================================================ */
 section {
   border-radius: 40px;
@@ -127,6 +140,7 @@ section {
   margin-block: clamp(20px, 4vw, 60px);
 }
 
+/* Bordered section (used across pages) */
 .section-with-border-1 {
   background: #ffffff;
   border-radius: 40px;
@@ -141,15 +155,18 @@ section {
   padding-inline: clamp(16px, 3vw, 40px);
 }
 
-/* Shared margin tweak for bordered sections */
 .section-with-border-1,
 .section-with-border-2,
 .section-with-border-3 {
-  margin: 40px clamp(10px, 4vw, 40px);
+  width: 100%;
+  max-width: 1536px;
+  margin: clamp(40px, 6vw, 80px) auto; /* auto centers it */
+  padding-inline: clamp(16px, 3vw, 40px); /* matches main */
 }
 
+
 /* ============================================================
-   MEDIA GRIDS
+   GLOBAL MEDIA GRIDS
 ============================================================ */
 .media-grid--2col,
 .media-grid--3col,
@@ -183,27 +200,8 @@ section {
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — GLOBAL
 ============================================================ */
-@media (max-width: 900px) {
-  main,
-  footer {
-    padding-inline: 16px;
-  }
-
-  section {
-    border-radius: 28px;
-    margin-block: 24px;
-    padding: 24px;
-  }
-
-  .section-with-border-1,
-  .section-with-border-2,
-  .section-with-border-3 {
-    margin: 24px 16px;
-  }
-}
-
 @media (max-width: 700px) {
   .media-grid--3col,
   .media-grid--4col {
@@ -216,5 +214,24 @@ section {
   .media-grid--3col,
   .media-grid--4col {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Global max-width wrapper for consistent alignment */
+.page-home main,
+.page-home footer {
+  max-width: 1536px;
+  margin: 0 auto;
+  width: 100%;
+  padding-inline: clamp(16px, 3vw, 40px);
+}
+
+/* Prevent bordered sections from touching the screen edges on small viewports */
+@media (max-width: 700px) {
+  .section-with-border-1,
+  .section-with-border-2,
+  .section-with-border-3 {
+    margin-left: clamp(16px, 4vw, 32px);
+    margin-right: clamp(16px, 4vw, 32px);
   }
 }

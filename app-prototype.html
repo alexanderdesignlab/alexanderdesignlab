@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sticker Illustrations — Alexander Design Lab</title>
-  <link rel="stylesheet" href="css/base.css"> 
+  <title>App Prototype — Alexander Design Lab</title>
+  <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
-<link rel="shortcut icon" href="favicon.ico">
-
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+  <link rel="shortcut icon" href="favicon.ico">
 </head>
 
-<body class="page-illustration">
+<body class="page-app">
 
 <header>
 
@@ -43,7 +42,7 @@
           <a href="illustrations.html" class="nav-circle illustration">Illustration</a>
           <a href="logo-designs.html" class="nav-circle logos">Logos</a>
           <a href="brand-identity.html" class="nav-circle branding">Branding</a>
-          <a href="temporary-app-page.html" class="nav-circle app">App</a>
+          <a href="app-prototype.html" class="nav-circle app">App</a>
           <a href="animation.html" class="nav-circle animation">Animation</a>
           <a href="interactive.html" class="nav-circle interactive">Game</a>
           <a href="about-me.html" class="nav-circle about-me">About Me</a>
@@ -54,58 +53,39 @@
 
 </header>
 
-<!-- MAIN CONTENT -->
 <section id="portfolio" class="section-with-border-1">
 <main>
 
-  <h3>Sticker Illustrations</h3>
-  <p class="p-style-1">A collection of hand‑drawn sticker designs.</p>
+  <h3>App Prototype</h3>
+  <p class="p-style-1">Swipe through the prototype screens.</p>
 
-  <div class="media-grid--3col">
+  <div class="swipe-gallery">
 
-    <div class="media-item">
+    <!-- Screen 1 -->
+    <div class="media-item swipe-item">
+      <p class="media-caption"></p>
       <div class="image-wrapper hover-zoom">
-        <img src="images/6-stickers/cat.png" loading="lazy" alt="Cat sticker" class="protected-image">
+        <img src="images/app/placeholder1.png" alt="App screen 1" class="protected-image">
         <div class="watermark"></div>
         <div class="overlay"></div>
       </div>
     </div>
 
-    <div class="media-item">
+    <!-- Screen 2 -->
+    <div class="media-item swipe-item">
+      <p class="media-caption"></p>
       <div class="image-wrapper hover-zoom">
-        <img src="images/6-stickers/dog.png" loading="lazy" alt="Dog sticker" class="protected-image">
+        <img src="images/app/placeholder2.png" alt="App screen 2" class="protected-image">
         <div class="watermark"></div>
         <div class="overlay"></div>
       </div>
     </div>
 
-    <div class="media-item">
+    <!-- Screen 3 -->
+    <div class="media-item swipe-item">
+      <p class="media-caption"></p>
       <div class="image-wrapper hover-zoom">
-        <img src="images/6-stickers/ferret.png" loading="lazy" alt="Ferret sticker" class="protected-image">
-        <div class="watermark"></div>
-        <div class="overlay"></div>
-      </div>
-    </div>
-
-    <div class="media-item">
-      <div class="image-wrapper hover-zoom">
-        <img src="images/6-stickers/finch.png" loading="lazy" alt="Finch sticker" class="protected-image">
-        <div class="watermark"></div>
-        <div class="overlay"></div>
-      </div>
-    </div>
-
-    <div class="media-item">
-      <div class="image-wrapper hover-zoom">
-        <img src="images/6-stickers/snail.png" loading="lazy" alt="Snail sticker" class="protected-image">
-        <div class="watermark"></div>
-        <div class="overlay"></div>
-      </div>
-    </div>
-
-    <div class="media-item">
-      <div class="image-wrapper hover-zoom">
-        <img src="images/6-stickers/snake.png" loading="lazy" alt="Snake sticker" class="protected-image">
+        <img src="images/app/placeholder3.png" alt="App screen 3" class="protected-image">
         <div class="watermark"></div>
         <div class="overlay"></div>
       </div>
@@ -115,12 +95,36 @@
 
 </main>
 </section>
+<section class="interactive-prototype-section">
+  <h3>Interactive Prototype</h3>
+  <p class="p-style-1">Explore the full app experience inside the device mockup.</p>
+
+  <div class="phone-mockup-wrapper">
+
+    <!-- Phone Frame -->
+    <div class="phone-frame">
+      <img src="images/mockups/phone-frame.png" 
+           alt="Phone Mockup Frame" 
+           class="phone-frame-image">
+
+      <!-- XD Embed Positioned Inside the Screen -->
+      <div class="phone-screen-embed">
+        <iframe 
+          src="https://xd.adobe.com/embed/e3a6ec44-5e1b-44a8-a1aa-9a84fa0d5b5c-b6f5/"
+          frameborder="0"
+          allowfullscreen
+          class="xd-iframe">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <footer>
   <p class="p-style-3">&copy; 2026 Alexander Design Lab. All rights reserved.</p>
 </footer>
 
-<!-- IMAGE / MEDIA SCRIPT -->
 <script src="js/global-media.js"></script>
 </body>
 </html>
